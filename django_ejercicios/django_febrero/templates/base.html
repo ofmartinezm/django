@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <title>  {% block title %}
+        {% endblock title %} - Curso Django
+    </title>
+</head>
+<body>
+
+
+    <div class="header-wrapper">
+    <header class="header" >
+        <h1 class="title">Libros de Ciencia Ficción</h1>
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Logotipo">
+        </div>
+    
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'portfolio' %}">Portfolio</a>
+                </li>
+                <li>
+                    <a href="{% url 'libros' %}">Libros</a>
+                </li>
+                <li>
+                    <a href="{% url 'usuarios' %}">Usuarios</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    </div>
+    
+    <main> 
+        {% block main %}
+        {% endblock main %}
+    </main>
+    
+    
+    
+    <footer><address>oscar fernando martinez || oscar.martinez@ocu.com.co || universitas XXI</address></footer>
+
+
+</body>
+</html>

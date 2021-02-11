@@ -1,0 +1,47 @@
+{% extends "base.html"%}
+
+
+{% block title %}
+AUTOR
+{% endblock title %}
+
+
+{% block main %}
+<div class="autor">
+<h2>{{autor.nombre }} {{autor.apellidos }}</h2>
+
+
+</div>    
+<div class="libros">
+
+    <ul>
+        {% for libro in libros %}
+        <li>
+            <a href="{% url 'libro' libro.id %}">{{libro.titulo}}</a>
+            <p>{{libro.descripcion}}</p>
+            <p>
+            {% for autor in libro.autor.all %}
+            <span>{{autor.nombre}} {{autor.apellidos}}</span>
+            {% endfor %}
+            </p>
+            <p>{{libro.genero}}</p>
+        
+            
+        </li>
+        
+
+
+        
+        {% endfor %}
+    </ul>
+</div>
+            
+
+<div class="back">
+<footer>
+    <a href="{% url 'libros'%} ">Volver</a>
+</footer>
+</div>
+
+    
+{% endblock main %}

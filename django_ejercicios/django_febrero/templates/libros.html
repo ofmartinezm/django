@@ -1,0 +1,39 @@
+{% extends "base.html"%}
+
+
+{% block title %}
+Libros
+{% endblock title %}
+
+
+{% block main %}
+    <h2>Lista de Libros</h2>
+    
+    <div class="libros">
+    <ul>
+        {% for libro in libros %}
+        <li>
+            <a class="libro" href="{% url 'libro' libro.id %}">{{libro.titulo}}</a>
+            <p>{{libro.descripcion}}</p>
+            <p>
+            {% for autor in libro.autor.all %}
+            <a class="autor" href="{% url 'autor' autor.id %}">
+                {{autor.nombre}} {{autor.apellidos}}
+            </a>
+            {% endfor %}
+            </p>
+            <p>Generro: {{libro.get_genero_display}}</p>
+        
+            
+        </li>
+        
+
+
+        
+        {% endfor %}
+    </ul>
+            
+</div>
+
+    
+{% endblock main %}

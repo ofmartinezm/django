@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Libro {{ libro.id }}
+{% endblock title %}
+
+{% block main %}
+    <div class="libro">
+        <header>
+            <h2>Datos de {{ libro.titulo }} ({{ libro.anio }})</h2>   
+        </header>
+        <div class="main">
+            <div class="data">
+                <p>
+                    {{ libro.get_genero_display }}
+                </p>
+                <p>
+                    {% for autor in libro.autor.all %}
+                    <a href="{% url 'autor' autor.id %}">
+                        <span> {{autor.nombre}} {{autor.apellidos}} </span>
+                    </a> |
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ libro.lugar_edicion }}: 
+                    {{ libro.editorial }}, 
+                    {{ libro.año_edicion }}
+                </p>
+                <p>
+                    {{ libro.descripcion }}
+                </p>
+            </div>
+            <div class="image">
+               <img src="{{ libro.portada.url }}" alt="Portada"> 
+            </div>
+        </div>
+
+        <footer class="back">
+            <a href="{% url 'libros'  %}">Volver</a>    
+        </footer>
+
+            
+    </div>
+{% endblock main %}
